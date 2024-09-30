@@ -12,7 +12,7 @@ def create_server_socket(port):
     context.use_certificate_file('server.crt')
     
     server_socket = SSL.Connection(context, socket.socket(socket.AF_INET, socket.SOCK_STREAM))
-    server_socket.bind(('192.168.122.1', port))
+    server_socket.bind(('0.0.0.0', port))
     server_socket.listen(5)
     return server_socket
 

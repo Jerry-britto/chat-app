@@ -66,4 +66,4 @@ class ChatClient:
             self.window.destroy()
 
 if __name__ == "__main__":
-    ChatClient('192.168.122.1', 8080)
+    ChatClient('172.16.128.25', 8080)
