@@ -1,6 +1,6 @@
 import socket
 import threading
-import rsa
+# import rsa
 
 choice = input("Do you want to host(1) or connect(2)")
 

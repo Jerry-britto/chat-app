@@ -7,12 +7,13 @@ chat_rooms = {}
 
 # Create a socket and wrap it with SSL
 def create_server_socket(port):
-    context = SSL.Context(SSL.SSLv23_METHOD)
-    context.use_privatekey_file('server.key')
-    context.use_certificate_file('server.crt')
+    #context = SSL.Context(SSL.SSLv23_METHOD)
+    #context.use_privatekey_file('server.key')
+    #context.use_certificate_file('server.crt')
     
-    server_socket = SSL.Connection(context, socket.socket(socket.AF_INET, socket.SOCK_STREAM))
-    server_socket.bind(('192.168.122.1', port))
+    #server_socket = SSL.Connection(context, socket.socket(socket.AF_INET, socket.SOCK_STREAM))
+    server_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+    server_socket.bind(('0.0.0.0', port))
     server_socket.listen(5)
     return server_socket
 
@@ -87,4 +88,4 @@ def start_server(port):
         client_handler = threading.Thread(target=handle_client, args=(client_socket,))
         client_handler.start()
 
-start_server(8080)
+start_server(8000)
