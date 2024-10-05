@@ -54,20 +54,20 @@ class ChatClient:
     def create_client_socket(self, server_ip, port):
 
         # with end to end encryption
-        context = SSL.Context(SSL.SSLv23_METHOD)
-        client_socket = SSL.Connection(context, socket.socket(socket.AF_INET, socket.SOCK_STREAM))
-        client_socket.connect((server_ip, port))
-        return client_socket
-
-        # client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        # context = SSL.Context(SSL.SSLv23_METHOD)
+        # client_socket = SSL.Connection(context, socket.socket(socket.AF_INET, socket.SOCK_STREAM))
         # client_socket.connect((server_ip, port))
         # return client_socket
+
+        client_socket = socket.socket(socket.AF_INET, socket.SOCK_STREAM)
+        client_socket.connect((server_ip, port))
+        return client_socket
 
     def send_message(self, event=None):
         message = self.message_entry.get()
         if message:
             self.client_socket.send(message.encode())
-            if message.lower() == 'bye':
+            if message.lower() == '*************************************************************':
                 print("You have disconnected from the chat.")
                 self.on_closing()
             else:
@@ -125,4 +125,4 @@ class ChatClient:
             self.window.destroy()
 
 if __name__ == "__main__":
-    ChatClient('192.168.122.1', 8000)
+    ChatClient('192.168.43.51', 8000)
